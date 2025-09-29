@@ -21,5 +21,8 @@ cursor = conexao.cursor()
 
 # funcoes.cadastrar_livro(titulo,autor,ano)
 # print(funcoes.listar_livro())
-id_disponivel = int(input("Digite o id do livro alterado: "))
-funcoes.updade_dispo(id_disponivel)
+# id = int(input("Digite o id do livro alterado ou removido: "))
+# "funcoes.updade_dispo(id)"
+# funcoes.remover(id)
+
+funcoes.menu()
