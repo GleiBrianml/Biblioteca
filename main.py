@@ -1,0 +1,18 @@
+import funcoes
+import sqlite3
+conexao = sqlite3.connect("Biblioteca.db")
+cursor = conexao.cursor()
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS Biblioteca(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        titulo TEXT NOT NULL,  
+        autor TEXT NOT NULL,
+        ano INTEGER,
+        disponivel TEXT)
+    """)
+conexao.commit()
+conexao.close()
+titulo = input("Digite o titulo do livro que deseja cadastrar: ")
+autor = input("Digite o autor do livro: ")
+ano = int(input("Insirar o ano do livro: "))
+funcoes.cadastrar_livro(titulo,ano,autor)
