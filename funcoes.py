@@ -8,4 +8,10 @@ def cadastrar_livro(titulo,autor,ano):
     """, (titulo, autor, ano, "Sim"))
     conexao.commit()
     conexao.close()
+def listar_livro():
+    conexao = sqlite3.connect("Biblioteca.db")
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM Biblioteca")
+#fetchall traz todas as linhas da consulta
+    for linha in cursor.fetchall(): return(f"ID {linha[0]}| Título: {linha[1]} | Ano: {linha[2]} | Autor: {linha[3]} | Disponivel : {linha[4]}")
 
