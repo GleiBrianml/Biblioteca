@@ -1,40 +1,67 @@
-# 📚 Sistema de Gerenciamento de Biblioteca com SQLite
+# 📚 Sistema de Biblioteca com Streamlit e SQLite
 
-Este é um simples sistema de gerenciamento de livros feito em **Python**, com uso de **SQLite** para persistência de dados. Ele permite cadastrar, listar, atualizar disponibilidade e remover livros de uma biblioteca local.
+Este é um sistema simples de gerenciamento de livros, desenvolvido com **Python**, utilizando **Streamlit** para a interface gráfica e **SQLite** como banco de dados. O sistema permite:
 
-## 🛠 Requisitos
+- Cadastrar novos livros
+- Listar todos os livros cadastrados
+- Atualizar a disponibilidade dos livros
+- Remover livros do acervo
 
-- Python 3.x
-- Biblioteca padrão `sqlite3` (já vem com o Python)
+## 🚀 Tecnologias Utilizadas
 
-## 🗄 Estrutura da Tabela
+- [Python 3.x](https://www.python.org/)
+- [Streamlit](https://streamlit.io/)
+- [SQLite3](https://www.sqlite.org/index.html)
 
-O banco de dados `Biblioteca.db` contém uma tabela chamada `Biblioteca` com os seguintes campos:
+---
 
-| Campo       | Tipo     | Descrição                       |
-|-------------|----------|----------------------------------|
-| `id`        | INTEGER  | Chave primária (autoincremento) |
-| `titulo`    | TEXT     | Título do livro                 |
-| `autor`     | TEXT     | Nome do autor                   |
-| `ano`       | INTEGER  | Ano de publicação               |
-| `disponivel`| TEXT     | Status de disponibilidade       |
+## 📂 Estrutura do Projeto
 
-**Criação da Tabela (caso ainda não exista):**
-```python
-import sqlite3
+-📁 seu_projeto/
+-│
+-├── 📄 app.py # Interface principal com Streamlit
+-├── 📄 funcoes_app.py # Arquivo com as funções de manipulação do banco
+-└── 📄 Biblioteca.db # Banco de dados SQLite (gerado automaticamente)
 
-conexao = sqlite3.connect("Biblioteca.db")
-cursor = conexao.cursor()
+---
 
-cursor.execute("""
+## ⚙️ Funcionalidades
+
+### ✅ Cadastrar Livro
+Adiciona um novo livro à base de dados, com título, autor e ano. O campo "Disponível" é definido como "Sim" por padrão.
+
+### 📋 Listar Livros
+Exibe todos os livros cadastrados no sistema em uma tabela com as seguintes colunas:
+- ID
+- Título
+- Autor
+- Ano
+- Disponível
+
+### 🔄 Atualizar Disponibilidade
+Alterna o status de disponibilidade de um livro entre "Sim" e "Não".
+
+### 🗑️ Remover Livro
+Remove um livro da base de dados com base no ID selecionado.
+
+---
+
+## 🛠️ Como Executar o Projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+cd seu-repositorio
+
+pip install streamlit
+
+streamlit run app.py
+
 CREATE TABLE IF NOT EXISTS Biblioteca (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     titulo TEXT NOT NULL,
     autor TEXT NOT NULL,
     ano INTEGER NOT NULL,
     disponivel TEXT NOT NULL
-)
-""")
-
-conexao.commit()
-conexao.close()
+);
