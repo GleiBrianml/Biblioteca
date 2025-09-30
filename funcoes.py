@@ -18,7 +18,7 @@ def cadastrar_livro():
         print(f"Erro no banco de dados: {e}")
     finally:
         conexao.close()
-def listar_livro():
+def listar_livros():
     try:
         conexao = sqlite3.connect("Biblioteca.db")
         cursor = conexao.cursor()
@@ -33,9 +33,8 @@ def listar_livro():
         print(f"Erro no banco de dados: {e}")
     finally:
         conexao.close()
-def updade_dispo():
+def atualizar_disponibilidade(id):
     try:
-        id = int(input("Digite o id do livro alterado ou removido: "))
         conexao = sqlite3.connect("Biblioteca.db")
         cursor = conexao.cursor()
         cursor.execute("SELECT disponivel FROM Biblioteca WHERE id = ?", (id,))
@@ -49,18 +48,17 @@ def updade_dispo():
                 WHERE id = ?
             """, (novo_status, id))
             conexao.commit()
-            print(f"Status atualizado para '{novo_status}'.")
+            return True, f"Status atualizado para '{novo_status}'."
         else:
-            print("Livro com o ID informado não encontrado.")
-    except ValueError:
-        print("Erro: o ID deve ser um número inteiro.")
+            return False, "Livro com o ID informado não encontrado."
     except sqlite3.Error as e:
-        print(f"Erro no banco de dados: {e}")
+        return False, f"Erro no banco de dados: {e}"
     finally:
         conexao.close()
 
 
-def remover():
+
+def remover_livro():
     try:
         id = int(input("Digite o id do livro alterado ou removido: "))
         conexao = sqlite3.connect("Biblioteca.db")
@@ -90,13 +88,12 @@ def menu():
             escolha = int(input("Escolha o numero da opção desejada: "))
             if escolha == 1:
                 cadastrar_livro()
-                print("Livro cadastrado")
             elif escolha == 2:
-                listar_livro()
+                listar_livros()
             elif escolha == 3:
-                updade_dispo()
+                atualizar_disponibilidade()
             elif escolha == 4:
-                remover()
+                remover_livro()
             elif escolha == 5:
                 print("Finalizando sistema!")
                 break
