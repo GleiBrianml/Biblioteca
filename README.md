@@ -17,11 +17,11 @@ Este é um sistema simples de gerenciamento de livros, desenvolvido com **Python
 
 ## 📂 Estrutura do Projeto
 
--📁 seu_projeto/
--│
--├── 📄 app.py # Interface principal com Streamlit
--├── 📄 funcoes_app.py # Arquivo com as funções de manipulação do banco
--└── 📄 Biblioteca.db # Banco de dados SQLite (gerado automaticamente)
+- 📁 seu_projeto/
+- │
+- ├── 📄 app.py # Interface principal com Streamlit
+- ├── 📄 funcoes_app.py # Arquivo com as funções de manipulação do banco
+- └── 📄 Biblioteca.db # Banco de dados SQLite (gerado automaticamente)
 
 ---
 
