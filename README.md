@@ -1,67 +1,68 @@
-# 📚 Sistema de Biblioteca com Streamlit e SQLite
+# 📚 Sistema de Gerenciamento de Biblioteca
 
-Este é um sistema simples de gerenciamento de livros, desenvolvido com **Python**, utilizando **Streamlit** para a interface gráfica e **SQLite** como banco de dados. O sistema permite:
+Este é um simples sistema de gerenciamento de biblioteca desenvolvido em **Python**, utilizando **Streamlit** para a interface web e **SQLite** como banco de dados. Ele permite:
 
 - Cadastrar novos livros
-- Listar todos os livros cadastrados
-- Atualizar a disponibilidade dos livros
+- Listar livros existentes
+- Atualizar a disponibilidade de livros
 - Remover livros do acervo
 
-## 🚀 Tecnologias Utilizadas
-
-- [Python 3.x](https://www.python.org/)
-- [Streamlit](https://streamlit.io/)
-- [SQLite3](https://www.sqlite.org/index.html)
-
 ---
 
-## 📂 Estrutura do Projeto
-
-- 📁 seu_projeto/
-- │
-- ├── 📄 app.py # Interface principal com Streamlit
-- ├── 📄 funcoes_app.py # Arquivo com as funções de manipulação do banco
-- └── 📄 Biblioteca.db # Banco de dados SQLite (gerado automaticamente)
-
----
-
-## ⚙️ Funcionalidades
+## 🚀 Funcionalidades
 
 ### ✅ Cadastrar Livro
-Adiciona um novo livro à base de dados, com título, autor e ano. O campo "Disponível" é definido como "Sim" por padrão.
+Adicione um novo livro ao banco de dados, preenchendo título, autor e ano de publicação.
 
 ### 📋 Listar Livros
-Exibe todos os livros cadastrados no sistema em uma tabela com as seguintes colunas:
+Exibe todos os livros cadastrados, mostrando:
 - ID
 - Título
 - Autor
 - Ano
-- Disponível
+- Disponibilidade
 
 ### 🔄 Atualizar Disponibilidade
-Alterna o status de disponibilidade de um livro entre "Sim" e "Não".
+Altere o status de disponibilidade de um livro entre `Sim` e `Não`.
 
 ### 🗑️ Remover Livro
-Remove um livro da base de dados com base no ID selecionado.
+Exclua um livro do banco de dados permanentemente, com base em seu ID.
 
 ---
 
-## 🛠️ Como Executar o Projeto
+## 🛠️ Tecnologias Utilizadas
 
-### 1. Clone o repositório
+- [Python](https://www.python.org/)
+- [SQLite](https://www.sqlite.org/index.html)
+- [Streamlit](https://streamlit.io/)
+
+---
+
+## 📁 Estrutura de Arquivos
+
+
+
+---
+
+## ⚙️ Como Executar o Projeto
+
+1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/seu-usuario/biblioteca-app.git
+cd biblioteca-app
+
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
 
 pip install streamlit
-
-streamlit run app.py
 
 CREATE TABLE IF NOT EXISTS Biblioteca (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     titulo TEXT NOT NULL,
     autor TEXT NOT NULL,
-    ano INTEGER NOT NULL,
-    disponivel TEXT NOT NULL
+    ano INTEGER,
+    disponivel TEXT
 );
+
